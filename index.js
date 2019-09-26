@@ -4,19 +4,9 @@ const morgan = require('morgan')
 const methodOverride = require('method-override')
 const app = express()
 const passport = require('passport')
-const BaseStrategy = require('passport-http').BasicStrategy
 
-// PASSPORT BASIC
-passport.use(new BaseStrategy(
-    function (username, password, cb){
-        if (username === 'admin' && password === 'admin'){
-            return cb(null, true)
-        }else{
-            return cb(null,false)
-        }
-    }
-))
 
+passport.use(require('./src/auth/basic'))
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
