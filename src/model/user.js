@@ -2,7 +2,9 @@ const moongose = require('mongoose')
 const bcrypt = require('bcrypt-nodejs')
 require('mongoose-type-email')
 
+//cria o model do user
 const User = moongose.Schema({
+    
     name:{
         type:String,
         require:true
@@ -20,7 +22,7 @@ const User = moongose.Schema({
         require: true
     }
 })
-
+//aqui usamos o bcrypt para criar um hash para o password que for cadastrado no form/frontend
 User.methods.genHash = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(7), null)
 }
