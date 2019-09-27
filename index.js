@@ -11,6 +11,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(passport.initialize())
+app.use(methodOverride('_method'))
 //seta o template para ser usado nesse caso foi usado o PUG
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'src/view'))
