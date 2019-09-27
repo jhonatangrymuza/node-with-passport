@@ -5,13 +5,13 @@ module.exports = (req, res) => {
 
     user.password = user.genHash(user.password)
 
-    user.save()
-    .then((user) => {
-        return res.redirect('/')
-    })
-    .catch((error) => {
-        console.log(error)
-        return
-    })
-
+    user
+        .save()
+        .then((user) => {
+            return res.redirect('/')
+        })
+        .catch((error) => {
+            console.log(error)
+            return
+        })
 }
